@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sorting your array with CSS magic</title>
-    <!--This document should preferably avoid using backtick '``' as strings such as `abc` will inform the compiler where to insert generated code. To use backtick write '``'.-->
+    <!--This document should preferably avoid using backtick as strings including backticks will inform the compiler where to insert generated code.-->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,11 +75,16 @@
         pre.okay { color: var(--color-terminal-okay); }
         pre.error { color: var(--color-terminal-error); }
 
+        #aa, #bb {
+            user-select: none;
+        }
+
         div.animation {
             padding: 30px;
             margin: 1em 0;
             background-color: var(--color-quaternary);
             margin-bottom: 0;
+            user-select: none;
 
             width: 990px;
             height: 440px;
@@ -98,8 +103,15 @@
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
+            user-select: none;
         }
     </style>
+
+    <style>
+        `pivotal`
+        `css_more`
+    </style>
+
 </head>
 <body>
     <div id="page">
@@ -108,15 +120,18 @@
         <pre class="terminal okay">Compilation successful. Sorting now...</pre>
 
         <h2>The sorting itself</h2>
-        <p class="terminal">3 1 4 1 5 9 2 6 5 3</p>
-        <p class="terminal">1 1 2 3 3 4 5 5 6 9</p>
-        <div class="animation">
-            Animation goes here
-        </div>
+        <!--<p class="terminal" id="aa">3 1 4 1 5 9 2 6 5 3</p>-->
+        <!--<p class="terminal" id="bb">1 1 2 3 3 4 5 5 6 9</p>-->
+        <p class="terminal" id="aa">`html_io`</p>
+        <p class="terminal" id="bb">`html_io`</p>
+
+        <!--<div class="animation">Animation goes here</div>-->
+        <div class="animation">`html_animation`</div>
+
         <button>Reload</button>
 
         <h2>The pivotal code</h2>
-<pre class="terminal"> /* bubble sort */
+<!--<pre class="terminal">/* bubble sort */
 :root {
     /* ... actual code goes here ... */
     --a0: 3;
@@ -143,7 +158,8 @@
     --b1: var(--t3x1);
     --b2: var(--t3x2);
 }
-</pre>
+</pre>-->
+<pre class="terminal">`pivotal`</pre>
     </div>
 </body>
 </html>

@@ -61,4 +61,34 @@ void string_append(String *str, const char* ext) {
     str->arr[str->len] = 0;
 }
 
+void string_append_base26(String *str, UInt64 nmb) {
+    do {
+        string_extend(str);
+        str->arr[str->len++] = nmb % 26 + 'A';
+        nmb /= 26;
+    } while(nmb > 0);
+}
+
+void string_append_base10(String *str, Int64 nmb) {
+    Int64 sign = 1;
+    if(nmb < 0) {
+        sign *= -1;
+        nmb *= -1;
+    }
+    char s[30];
+    char* top = s;
+    do {
+        *(top++) = nmb % 10 + '0';
+        nmb /= 10;
+    } while(nmb > 0);
+    if(sign < 0) {
+        string_extend(str);
+        str->arr[str->len++] = '-';
+    }
+    while(top != s) {
+        string_extend(str);
+        str->arr[str->len++] = *(--top);
+    }
+}
+
 #endif

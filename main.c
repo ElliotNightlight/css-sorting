@@ -32,75 +32,178 @@ const char* CASUAL_MESSAGE_LOOKUP[] = {
 #define MAX_VALUE 1000000000ll
 #define KILL_THRESHOLD 20
 
-int main(const int argc, const char* argv[]) {
+Vector numbers;
+Int32 status;
+Int32 codes;
 
-    Vector numbers;
-    vector_new(&numbers);
+void fprocess(const char* fname) {
+    FILE *fptr = fopen(fname, "r");
+    if(fptr == NULL) {
+        if(WARNINGS > status) status = WARNINGS;
+        codes = codes | 1 << WARNING_CANNOT_READ;
+    } else {
+        Int8 await_whitespace = 0;
+        Int8 holds_value = 0;
+        Int64 accumulator = 0;
+        Int64 sign = 1;
+        Int32 c;
+        do {
+            c = fgetc(fptr);
+            if(c != EOF && !isspace(c) && (char)c != '-' && !((char)c >= '0' && (char)c <= '9')) {
+                if(WARNINGS > status) status = WARNINGS;
+                codes = codes | 1 << WARNING_ERRONEOUS_FILE;
+                holds_value = 0;
+                await_whitespace = 1;
+                continue;
+            }
 
-    Int32 status = OKAY;
-    Int32 codes = 0;
+            if(await_whitespace) {
+                if(isspace(c)) {
+                    holds_value = 0;
+                    await_whitespace = 0;
+                }
+                continue;
+            }
 
-    for(const char** fname = argv + 1; fname != argv + argc; ++fname) {
-        FILE *fptr = fopen(*fname, "r");
-        if(fptr == NULL) {
-            if(WARNINGS > status) status = WARNINGS;
-            codes = codes | 1 << WARNING_CANNOT_READ;
-        } else {
-            Int8 await_whitespace = 0;
-            Int8 holds_value = 0;
-            Int64 accumulator = 0;
-            Int64 sign = 1;
-            Int32 c;
-            do {
-                c = fgetc(fptr);
-                if(c != EOF && !isspace(c) && (char)c != '-' && !((char)c >= '0' && (char)c <= '9')) {
+            if((char)c == '-') {
+                if(holds_value) {
                     if(WARNINGS > status) status = WARNINGS;
                     codes = codes | 1 << WARNING_ERRONEOUS_FILE;
                     holds_value = 0;
                     await_whitespace = 1;
                     continue;
                 }
-
-                if(await_whitespace) {
-                    if(isspace(c)) {
-                        holds_value = 0;
-                        await_whitespace = 0;
-                    }
-                    continue;
-                }
-
-                if((char)c == '-') {
-                    if(holds_value) {
-                        if(WARNINGS > status) status = WARNINGS;
-                        codes = codes | 1 << WARNING_ERRONEOUS_FILE;
-                        holds_value = 0;
-                        await_whitespace = 1;
-                        continue;
-                    }
+                accumulator = 0;
+                sign *= -1;
+                holds_value = 1;
+            } else if((char)c >= '0' && (char)c <= '9') {
+                if(!holds_value) {
                     accumulator = 0;
-                    sign *= -1;
+                    sign = 1;
                     holds_value = 1;
-                } else if((char)c >= '0' && (char)c <= '9') {
-                    if(!holds_value) {
-                        accumulator = 0;
-                        sign = 1;
-                        holds_value = 1;
-                    }
-                    accumulator *= 10;
-                    accumulator += (char)c - '0';
-                    if(accumulator > MAX_VALUE) {
-                        if(WARNINGS > status) status = WARNINGS;
-                        codes = codes | 1 << WARNING_ERRONEOUS_FILE;
-                        accumulator = MAX_VALUE;
-                    }
-                } else if(holds_value) {
-                    holds_value = 0;
-                    vector_extend(&numbers);
-                    numbers.arr[numbers.len++] = sign * accumulator;
                 }
-            } while(c != EOF);
+                accumulator *= 10;
+                accumulator += (char)c - '0';
+                if(accumulator > MAX_VALUE) {
+                    if(WARNINGS > status) status = WARNINGS;
+                    codes = codes | 1 << WARNING_ERRONEOUS_FILE;
+                    accumulator = MAX_VALUE;
+                }
+            } else if(holds_value) {
+                holds_value = 0;
+                vector_extend(&numbers);
+                numbers.arr[numbers.len++] = sign * accumulator;
+            }
+        } while(c != EOF);
+    }
+}
 
+String pivotal;
+String css_more;
+String html_io;
+String html_animationation;
+
+void compile() {
+    string_new(&pivotal);
+    string_append(&pivotal, ":root {\n");
+
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        string_append(&pivotal, "    --a");
+        string_append_base10(&pivotal, i);
+        string_append(&pivotal, ": ");
+        string_append_base10(&pivotal, numbers.arr[i]);
+        string_append(&pivotal, ";\n");
+    }
+
+    UInt64 C = 0;
+    UInt64 *lookup = malloc(numbers.len * sizeof(UInt64));
+    string_append(&pivotal, "\n");
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        lookup[i] = C++;
+        string_append(&pivotal, "    --");
+        string_append_base26(&pivotal, lookup[i]);
+        string_append(&pivotal, ": var(--a");
+        string_append_base10(&pivotal, i);
+        string_append(&pivotal, ");\n");
+    }
+
+    for(IntSize i = numbers.len-1; i >= 0; --i) {
+        for(IntSize j = i; j + 1 < numbers.len; ++j) {
+            string_append(&pivotal, "    --");
+            string_append_base26(&pivotal, C);
+            string_append(&pivotal, ": min(var(--");
+            string_append_base26(&pivotal, lookup[j]);
+            string_append(&pivotal, "), var(--");
+            string_append_base26(&pivotal, lookup[j+1]);
+            string_append(&pivotal, "));\n");
+
+            string_append(&pivotal, "    --");
+            string_append_base26(&pivotal, C+1);
+            string_append(&pivotal, ": max(var(--");
+            string_append_base26(&pivotal, lookup[j]);
+            string_append(&pivotal, "), var(--");
+            string_append_base26(&pivotal, lookup[j+1]);
+            string_append(&pivotal, "));\n");
+
+            lookup[j] = C;
+            lookup[j+1] = C+1;
+            C += 2;
         }
+    }
+
+    string_append(&pivotal, "\n");
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        string_append(&pivotal, "    --b");
+        string_append_base10(&pivotal, i);
+        string_append(&pivotal, ": var(--");
+        string_append_base26(&pivotal, lookup[i]);
+        string_append(&pivotal, ");\n");
+    }
+
+    string_append(&pivotal, "}\n");
+    free(lookup);
+
+    string_new(&css_more);
+
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        string_append(&css_more, "#aa span:nth-child(");
+        string_append_base10(&css_more, i+1);
+        string_append(&css_more, "):after { counter-reset: sth var(--a");
+        string_append_base10(&css_more, i);
+        string_append(&css_more, "); content: counter(sth); }\n");
+    }
+
+    string_append(&css_more, "\n");
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        string_append(&css_more, "#bb span:nth-child(");
+        string_append_base10(&css_more, i+1);
+        string_append(&css_more, "):after { counter-reset: sth var(--b");
+        string_append_base10(&css_more, i);
+        string_append(&css_more, "); content: counter(sth); }\n");
+    }
+
+    string_new(&html_io);
+    string_new(&html_animation);
+
+    for(IntSize i = 0; i != numbers.len; ++i) {
+        string_append(&html_io, "<span></span> ");
+        string_append(&html_animation, "<div></div> ");
+    }
+}
+
+const char* INDEX = "index.html";
+void insert() {
+    FILE *fptr = 
+}
+
+int main(const int argc, const char* argv[]) {
+
+    vector_new(&numbers);
+    status = OKAY;
+    codes = 0;
+
+    for(const char** arg = argv + 1; arg != argv + argc; ++arg) {
+        fprocess(*arg);
     }
 
     if(numbers.len == 0) {
@@ -111,12 +214,31 @@ int main(const int argc, const char* argv[]) {
     if(numbers.len >= KILL_THRESHOLD) {
         if(ERRORS > status) status = ERRORS;
         codes = codes | 1 << ERROR_BIG_INPUT;
+        numbers.len = KILL_THRESHOLD - 1;
     }
 
     for(Int64 *ptr = numbers.arr; ptr != numbers.arr + numbers.len; ++ptr) {
         printf("%ld ", *ptr);
     }
     printf("\n");
+
+    compile();
+
+    string_extend(&pivotal);
+    pivotal.arr[pivotal.len] = 0;
+    printf("%s\n", pivotal.arr);
+
+    string_extend(&css_more);
+    css_more.arr[css_more.len] = 0;
+    printf("%s\n", css_more.arr);
+
+    string_extend(&html_io);
+    html_io.arr[html_io.len] = 0;
+    printf("%s\n", html_io.arr);
+
+    string_extend(&html_animation);
+    html_animation.arr[html_animation.len] = 0;
+    printf("%s\n", html_animation.arr);
 
     if(codes & 1 << ERROR_INVALID_INPUT)    fprintf(stderr, "[error]   %s\n", CASUAL_MESSAGE_LOOKUP[ERROR_INVALID_INPUT]);
     if(codes & 1 << ERROR_BIG_INPUT)        fprintf(stderr, "[error]   %s\n", CASUAL_MESSAGE_LOOKUP[ERROR_BIG_INPUT]);
