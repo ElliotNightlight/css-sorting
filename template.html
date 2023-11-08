@@ -16,13 +16,14 @@
             --color-background: #220426;
             --color-primary:    #d6d600;
             --color-secondary:  #00a8dc;
-            --color-tertiary:   #ae00ab;
+            --color-tertiary:   #ffffff27;
+            /*--color-tertiary:   #ae00ab;*/
             --color-quaternary: #ffffff1a;
 
-            --color-terminal-bg:    #000000;
-            --color-terminal-text:  #ffffff;
-            --color-terminal-okay:  #00ff00;
-            --color-terminal-error: #ff0000;
+            --color-terminal-bg:      #000000;
+            --color-terminal-text:    #ffffff;
+            --color-terminal-okay:    #00ff00;
+            --color-terminal-warning: #ffff00;
         }
 
         body {
@@ -33,9 +34,9 @@
             font-size: 20px;
         }
 
-        ::-webkit-scrollbar { width: 10px; }
+        /*::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background-color: #333; }
-        ::-webkit-scrollbar-thumb { background-color: #666; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb { background-color: #666; border-radius: 5px; }*/
 
         #page {
             width: 1050px;
@@ -73,7 +74,7 @@
             color: var(--color-terminal-text);
         }
         pre.okay { color: var(--color-terminal-okay); }
-        pre.error { color: var(--color-terminal-error); }
+        pre.warning { color: var(--color-terminal-warning); }
 
         #aa, #bb {
             user-select: none;
@@ -86,8 +87,24 @@
             margin-bottom: 0;
             user-select: none;
 
-            width: 990px;
-            height: 440px;
+            --w: 990px;
+            --h: 440px;
+            --g: 20px;
+            --n: `len`;
+
+            width: var(--w);
+            height: var(--h);
+
+            display: flex;
+            flex-direction: row;
+            gap: var(--g);
+            align-items: end;
+        }
+
+        div.animation > div {
+            background-color: var(--color-tertiary);
+            width: calc((var(--w) - (var(--n) - 1) * var(--g)) / var(--n));
+            height: var(--h);
         }
 
         button {
@@ -107,17 +124,17 @@
         }
     </style>
 
-    <style>
-        `pivotal`
-        `css_more`
-    </style>
+<style>
+`pivotal`
+`css_more`
+</style>
 
 </head>
 <body>
     <div id="page">
         <h1>Sorting your array with <span>CSS</span> magic</h1>
         <p>What you can see below is pure CSS integer array sorting; if the compilation went well. (Well, there's a button, which uses JS, to reload the animation but the sorting and animation themselves are done with pure CSS.) So, sit tight and enjoy your browser doing excessive work to sort an array of a few numbers. By the way, this page has been generated with my handcrafted compiler. It takes a file with an array of integers as input and gives the HTML and CSS which sort the array as output. The compiler uses bubble sort as for now.</p>
-        <pre class="terminal okay">Compilation successful. Sorting now...</pre>
+        <pre class="terminal `okay`">`status`</pre>
 
         <h2>The sorting itself</h2>
         <!--<p class="terminal" id="aa">3 1 4 1 5 9 2 6 5 3</p>-->

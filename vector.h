@@ -10,20 +10,20 @@ typedef struct {
     Int64 *arr;
 } Vector;
 
-static inline void vector_new(Vector *vec) {
+inline void vector_new(Vector *vec) {
     vec->len = 0;
     vec->cap = 0;
     vec->arr = NULL;
 }
 
-static inline void vector_extend(Vector *vec) {
+inline void vector_extend(Vector *vec) {
     if(vec->len != vec->cap) return;
     if(vec->cap == 0) vec->cap = 1;
     else vec->cap *= 2;
-    vec->arr = realloc(vec->arr, vec->cap * sizeof(Int64));
+    vec->arr = (Int64*)realloc(vec->arr, vec->cap * sizeof(Int64));
 }
 
-static inline void vec_free(Vector *vec) {
+inline void vector_free(Vector *vec) {
     free(vec->arr);
 }
 
@@ -33,20 +33,20 @@ typedef struct {
     char* arr;
 } String;
 
-static inline void string_new(String *str) {
+inline void string_new(String *str) {
     str->len = 0;
     str->cap = 0;
     str->arr = NULL;
 }
 
-static inline void string_extend(String *str) {
+inline void string_extend(String *str) {
     if(str->len != str->cap) return;
     if(str->cap == 0) str->cap = 1;
     else str->cap *= 2;
-    str->arr = realloc(str->arr, str->cap * sizeof(char));
+    str->arr = (char*)realloc(str->arr, str->cap * sizeof(char));
 }
 
-static inline void string_free(String *str) {
+inline void string_free(String *str) {
     free(str->arr);
 }
 
