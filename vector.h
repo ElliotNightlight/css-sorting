@@ -91,4 +91,15 @@ void string_append_base10(String *str, Int64 nmb) {
     }
 }
 
+void string_append_percent(String *str, double nmb) {
+    Int64 sth = nmb * 10000;
+    string_extend(str); str->arr[str->len++] = sth / 10000 + '0';
+    string_extend(str); str->arr[str->len++] = sth / 1000 % 10 + '0';
+    string_extend(str); str->arr[str->len++] = sth / 100 % 10 + '0';
+    string_extend(str); str->arr[str->len++] = '.';
+    string_extend(str); str->arr[str->len++] = sth / 10 % 10 + '0';
+    string_extend(str); str->arr[str->len++] = sth % 10 + '0';
+    string_extend(str); str->arr[str->len++] = '%';
+}
+
 #endif

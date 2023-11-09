@@ -105,6 +105,9 @@
             background-color: var(--color-tertiary);
             width: calc((var(--w) - (var(--n) - 1) * var(--g)) / var(--n));
             height: var(--h);
+
+            animation-duration: `Time`s;
+            animation-fill-mode: forwards;
         }
 
         button {
@@ -127,6 +130,7 @@
 <style>
 `pivotal`
 `css_more`
+
 </style>
 
 </head>
@@ -145,7 +149,7 @@
         <!--<div class="animation">Animation goes here</div>-->
         <div class="animation">`html_animation`</div>
 
-        <button>Reload</button>
+        <button onclick="restartAnimation()">Reload</button>
 
         <h2>The pivotal code</h2>
 <!--<pre class="terminal">/* bubble sort */
@@ -178,5 +182,15 @@
 </pre>-->
 <pre class="terminal">`pivotal`</pre>
     </div>
+    <script>
+        function restartAnimation() {
+            const box = document.querySelector('.animation');
+            box.classList.remove('animation');
+            setTimeout(() => {
+                box.classList.add('animation');
+            });
+        }
+    </script>
+
 </body>
 </html>

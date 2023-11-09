@@ -90,7 +90,7 @@
             --w: 990px;
             --h: 440px;
             --g: 20px;
-            --n: 9;
+            --n: 10;
 
             width: var(--w);
             height: var(--h);
@@ -105,6 +105,9 @@
             background-color: var(--color-tertiary);
             width: calc((var(--w) - (var(--n) - 1) * var(--g)) / var(--n));
             height: var(--h);
+
+            animation-duration: 45s;
+            animation-fill-mode: forwards;
         }
 
         button {
@@ -130,11 +133,12 @@
     --a1: 1;
     --a2: 4;
     --a3: 1;
-    --a4: 5000;
-    --a5: 100;
-    --a6: 200;
-    --a7: 300;
-    --a8: 400;
+    --a4: 5;
+    --a5: 9;
+    --a6: 2;
+    --a7: 6;
+    --a8: 5;
+    --a9: 3;
 
     --A: var(--a0);
     --B: var(--a1);
@@ -145,88 +149,108 @@
     --G: var(--a6);
     --H: var(--a7);
     --I: var(--a8);
-    --J: min(var(--H), var(--I));
-    --K: max(var(--H), var(--I));
-    --L: min(var(--G), var(--J));
-    --M: max(var(--G), var(--J));
-    --N: min(var(--M), var(--K));
-    --O: max(var(--M), var(--K));
-    --P: min(var(--F), var(--L));
-    --Q: max(var(--F), var(--L));
-    --R: min(var(--Q), var(--N));
-    --S: max(var(--Q), var(--N));
-    --T: min(var(--S), var(--O));
-    --U: max(var(--S), var(--O));
-    --V: min(var(--E), var(--P));
-    --W: max(var(--E), var(--P));
-    --X: min(var(--W), var(--R));
-    --Y: max(var(--W), var(--R));
-    --Z: min(var(--Y), var(--T));
-    --AB: max(var(--Y), var(--T));
-    --BB: min(var(--AB), var(--U));
-    --CB: max(var(--AB), var(--U));
-    --DB: min(var(--D), var(--V));
-    --EB: max(var(--D), var(--V));
-    --FB: min(var(--EB), var(--X));
-    --GB: max(var(--EB), var(--X));
-    --HB: min(var(--GB), var(--Z));
-    --IB: max(var(--GB), var(--Z));
-    --JB: min(var(--IB), var(--BB));
-    --KB: max(var(--IB), var(--BB));
-    --LB: min(var(--KB), var(--CB));
-    --MB: max(var(--KB), var(--CB));
-    --NB: min(var(--C), var(--DB));
-    --OB: max(var(--C), var(--DB));
-    --PB: min(var(--OB), var(--FB));
-    --QB: max(var(--OB), var(--FB));
-    --RB: min(var(--QB), var(--HB));
-    --SB: max(var(--QB), var(--HB));
-    --TB: min(var(--SB), var(--JB));
-    --UB: max(var(--SB), var(--JB));
-    --VB: min(var(--UB), var(--LB));
-    --WB: max(var(--UB), var(--LB));
-    --XB: min(var(--WB), var(--MB));
-    --YB: max(var(--WB), var(--MB));
-    --ZB: min(var(--B), var(--NB));
-    --AC: max(var(--B), var(--NB));
-    --BC: min(var(--AC), var(--PB));
-    --CC: max(var(--AC), var(--PB));
-    --DC: min(var(--CC), var(--RB));
-    --EC: max(var(--CC), var(--RB));
-    --FC: min(var(--EC), var(--TB));
-    --GC: max(var(--EC), var(--TB));
-    --HC: min(var(--GC), var(--VB));
-    --IC: max(var(--GC), var(--VB));
-    --JC: min(var(--IC), var(--XB));
-    --KC: max(var(--IC), var(--XB));
-    --LC: min(var(--KC), var(--YB));
-    --MC: max(var(--KC), var(--YB));
-    --NC: min(var(--A), var(--ZB));
-    --OC: max(var(--A), var(--ZB));
-    --PC: min(var(--OC), var(--BC));
-    --QC: max(var(--OC), var(--BC));
-    --RC: min(var(--QC), var(--DC));
-    --SC: max(var(--QC), var(--DC));
-    --TC: min(var(--SC), var(--FC));
-    --UC: max(var(--SC), var(--FC));
-    --VC: min(var(--UC), var(--HC));
-    --WC: max(var(--UC), var(--HC));
-    --XC: min(var(--WC), var(--JC));
-    --YC: max(var(--WC), var(--JC));
-    --ZC: min(var(--YC), var(--LC));
-    --AD: max(var(--YC), var(--LC));
-    --BD: min(var(--AD), var(--MC));
-    --CD: max(var(--AD), var(--MC));
+    --J: var(--a9);
+    --K: min(var(--I), var(--J));
+    --L: max(var(--I), var(--J));
+    --M: min(var(--H), var(--K));
+    --N: max(var(--H), var(--K));
+    --O: min(var(--N), var(--L));
+    --P: max(var(--N), var(--L));
+    --Q: min(var(--G), var(--M));
+    --R: max(var(--G), var(--M));
+    --S: min(var(--R), var(--O));
+    --T: max(var(--R), var(--O));
+    --U: min(var(--T), var(--P));
+    --V: max(var(--T), var(--P));
+    --W: min(var(--F), var(--Q));
+    --X: max(var(--F), var(--Q));
+    --Y: min(var(--X), var(--S));
+    --Z: max(var(--X), var(--S));
+    --AB: min(var(--Z), var(--U));
+    --BB: max(var(--Z), var(--U));
+    --CB: min(var(--BB), var(--V));
+    --DB: max(var(--BB), var(--V));
+    --EB: min(var(--E), var(--W));
+    --FB: max(var(--E), var(--W));
+    --GB: min(var(--FB), var(--Y));
+    --HB: max(var(--FB), var(--Y));
+    --IB: min(var(--HB), var(--AB));
+    --JB: max(var(--HB), var(--AB));
+    --KB: min(var(--JB), var(--CB));
+    --LB: max(var(--JB), var(--CB));
+    --MB: min(var(--LB), var(--DB));
+    --NB: max(var(--LB), var(--DB));
+    --OB: min(var(--D), var(--EB));
+    --PB: max(var(--D), var(--EB));
+    --QB: min(var(--PB), var(--GB));
+    --RB: max(var(--PB), var(--GB));
+    --SB: min(var(--RB), var(--IB));
+    --TB: max(var(--RB), var(--IB));
+    --UB: min(var(--TB), var(--KB));
+    --VB: max(var(--TB), var(--KB));
+    --WB: min(var(--VB), var(--MB));
+    --XB: max(var(--VB), var(--MB));
+    --YB: min(var(--XB), var(--NB));
+    --ZB: max(var(--XB), var(--NB));
+    --AC: min(var(--C), var(--OB));
+    --BC: max(var(--C), var(--OB));
+    --CC: min(var(--BC), var(--QB));
+    --DC: max(var(--BC), var(--QB));
+    --EC: min(var(--DC), var(--SB));
+    --FC: max(var(--DC), var(--SB));
+    --GC: min(var(--FC), var(--UB));
+    --HC: max(var(--FC), var(--UB));
+    --IC: min(var(--HC), var(--WB));
+    --JC: max(var(--HC), var(--WB));
+    --KC: min(var(--JC), var(--YB));
+    --LC: max(var(--JC), var(--YB));
+    --MC: min(var(--LC), var(--ZB));
+    --NC: max(var(--LC), var(--ZB));
+    --OC: min(var(--B), var(--AC));
+    --PC: max(var(--B), var(--AC));
+    --QC: min(var(--PC), var(--CC));
+    --RC: max(var(--PC), var(--CC));
+    --SC: min(var(--RC), var(--EC));
+    --TC: max(var(--RC), var(--EC));
+    --UC: min(var(--TC), var(--GC));
+    --VC: max(var(--TC), var(--GC));
+    --WC: min(var(--VC), var(--IC));
+    --XC: max(var(--VC), var(--IC));
+    --YC: min(var(--XC), var(--KC));
+    --ZC: max(var(--XC), var(--KC));
+    --AD: min(var(--ZC), var(--MC));
+    --BD: max(var(--ZC), var(--MC));
+    --CD: min(var(--BD), var(--NC));
+    --DD: max(var(--BD), var(--NC));
+    --ED: min(var(--A), var(--OC));
+    --FD: max(var(--A), var(--OC));
+    --GD: min(var(--FD), var(--QC));
+    --HD: max(var(--FD), var(--QC));
+    --ID: min(var(--HD), var(--SC));
+    --JD: max(var(--HD), var(--SC));
+    --KD: min(var(--JD), var(--UC));
+    --LD: max(var(--JD), var(--UC));
+    --MD: min(var(--LD), var(--WC));
+    --ND: max(var(--LD), var(--WC));
+    --OD: min(var(--ND), var(--YC));
+    --PD: max(var(--ND), var(--YC));
+    --QD: min(var(--PD), var(--AD));
+    --RD: max(var(--PD), var(--AD));
+    --SD: min(var(--RD), var(--CD));
+    --TD: max(var(--RD), var(--CD));
+    --UD: min(var(--TD), var(--DD));
+    --VD: max(var(--TD), var(--DD));
 
-    --b0: var(--NC);
-    --b1: var(--PC);
-    --b2: var(--RC);
-    --b3: var(--TC);
-    --b4: var(--VC);
-    --b5: var(--XC);
-    --b6: var(--ZC);
-    --b7: var(--BD);
-    --b8: var(--CD);
+    --b0: var(--ED);
+    --b1: var(--GD);
+    --b2: var(--ID);
+    --b3: var(--KD);
+    --b4: var(--MD);
+    --b5: var(--OD);
+    --b6: var(--QD);
+    --b7: var(--SD);
+    --b8: var(--UD);
+    --b9: var(--VD);
 }
 
 #aa span:nth-child(1):after { counter-reset: sth var(--a0); content: counter(sth); }
@@ -238,6 +262,7 @@
 #aa span:nth-child(7):after { counter-reset: sth var(--a6); content: counter(sth); }
 #aa span:nth-child(8):after { counter-reset: sth var(--a7); content: counter(sth); }
 #aa span:nth-child(9):after { counter-reset: sth var(--a8); content: counter(sth); }
+#aa span:nth-child(10):after { counter-reset: sth var(--a9); content: counter(sth); }
 
 #bb span:nth-child(1):after { counter-reset: sth var(--b0); content: counter(sth); }
 #bb span:nth-child(2):after { counter-reset: sth var(--b1); content: counter(sth); }
@@ -248,6 +273,420 @@
 #bb span:nth-child(7):after { counter-reset: sth var(--b6); content: counter(sth); }
 #bb span:nth-child(8):after { counter-reset: sth var(--b7); content: counter(sth); }
 #bb span:nth-child(9):after { counter-reset: sth var(--b8); content: counter(sth); }
+#bb span:nth-child(10):after { counter-reset: sth var(--b9); content: counter(sth); }
+
+div.animation > div:nth-child(1) { height: calc(clamp(1, var(--a0), 10) / 10 * var(--h)); animation-name: anim1; }
+div.animation > div:nth-child(2) { height: calc(clamp(1, var(--a1), 10) / 10 * var(--h)); animation-name: anim2; }
+div.animation > div:nth-child(3) { height: calc(clamp(1, var(--a2), 10) / 10 * var(--h)); animation-name: anim3; }
+div.animation > div:nth-child(4) { height: calc(clamp(1, var(--a3), 10) / 10 * var(--h)); animation-name: anim4; }
+div.animation > div:nth-child(5) { height: calc(clamp(1, var(--a4), 10) / 10 * var(--h)); animation-name: anim5; }
+div.animation > div:nth-child(6) { height: calc(clamp(1, var(--a5), 10) / 10 * var(--h)); animation-name: anim6; }
+div.animation > div:nth-child(7) { height: calc(clamp(1, var(--a6), 10) / 10 * var(--h)); animation-name: anim7; }
+div.animation > div:nth-child(8) { height: calc(clamp(1, var(--a7), 10) / 10 * var(--h)); animation-name: anim8; }
+div.animation > div:nth-child(9) { height: calc(clamp(1, var(--a8), 10) / 10 * var(--h)); animation-name: anim9; }
+div.animation > div:nth-child(10) { height: calc(clamp(1, var(--a9), 10) / 10 * var(--h)); animation-name: anim10; }
+
+@keyframes anim1 {
+    0% { height: calc(clamp(1, var(--a0), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    080.00% { background-color: var(--color-tertiary); }
+    080.01% { height: calc(clamp(1, var(--A), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    082.20% { height: calc(clamp(1, var(--ED), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    082.22% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b0), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim2 {
+    0% { height: calc(clamp(1, var(--a1), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    062.22% { background-color: var(--color-tertiary); }
+    062.23% { height: calc(clamp(1, var(--B), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    064.42% { height: calc(clamp(1, var(--OC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    064.44% { background-color: var(--color-tertiary); }
+    080.00% { background-color: var(--color-tertiary); }
+    080.01% { height: calc(clamp(1, var(--OC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    082.20% { height: calc(clamp(1, var(--FD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    082.22% { background-color: var(--color-tertiary); }
+    082.22% { background-color: var(--color-tertiary); }
+    082.23% { height: calc(clamp(1, var(--FD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    084.42% { height: calc(clamp(1, var(--GD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    084.44% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b1), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim3 {
+    0% { height: calc(clamp(1, var(--a2), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    046.66% { background-color: var(--color-tertiary); }
+    046.68% { height: calc(clamp(1, var(--C), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    048.87% { height: calc(clamp(1, var(--AC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    048.88% { background-color: var(--color-tertiary); }
+    062.22% { background-color: var(--color-tertiary); }
+    062.23% { height: calc(clamp(1, var(--AC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    064.42% { height: calc(clamp(1, var(--PC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    064.44% { background-color: var(--color-tertiary); }
+    064.44% { background-color: var(--color-tertiary); }
+    064.45% { height: calc(clamp(1, var(--PC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    066.65% { height: calc(clamp(1, var(--QC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    066.66% { background-color: var(--color-tertiary); }
+    082.22% { background-color: var(--color-tertiary); }
+    082.23% { height: calc(clamp(1, var(--QC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    084.42% { height: calc(clamp(1, var(--HD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    084.44% { background-color: var(--color-tertiary); }
+    084.44% { background-color: var(--color-tertiary); }
+    084.45% { height: calc(clamp(1, var(--HD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    086.65% { height: calc(clamp(1, var(--ID), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    086.66% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b2), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim4 {
+    0% { height: calc(clamp(1, var(--a3), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    033.33% { background-color: var(--color-tertiary); }
+    033.34% { height: calc(clamp(1, var(--D), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    035.54% { height: calc(clamp(1, var(--OB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    035.55% { background-color: var(--color-tertiary); }
+    046.66% { background-color: var(--color-tertiary); }
+    046.68% { height: calc(clamp(1, var(--OB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    048.87% { height: calc(clamp(1, var(--BC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    048.88% { background-color: var(--color-tertiary); }
+    048.88% { background-color: var(--color-tertiary); }
+    048.90% { height: calc(clamp(1, var(--BC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    051.09% { height: calc(clamp(1, var(--CC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    051.11% { background-color: var(--color-tertiary); }
+    064.44% { background-color: var(--color-tertiary); }
+    064.45% { height: calc(clamp(1, var(--CC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    066.65% { height: calc(clamp(1, var(--RC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    066.66% { background-color: var(--color-tertiary); }
+    066.66% { background-color: var(--color-tertiary); }
+    066.68% { height: calc(clamp(1, var(--RC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    068.87% { height: calc(clamp(1, var(--SC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    068.88% { background-color: var(--color-tertiary); }
+    084.44% { background-color: var(--color-tertiary); }
+    084.45% { height: calc(clamp(1, var(--SC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    086.65% { height: calc(clamp(1, var(--JD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    086.66% { background-color: var(--color-tertiary); }
+    086.66% { background-color: var(--color-tertiary); }
+    086.68% { height: calc(clamp(1, var(--JD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    088.87% { height: calc(clamp(1, var(--KD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    088.88% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b3), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim5 {
+    0% { height: calc(clamp(1, var(--a4), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    022.22% { background-color: var(--color-tertiary); }
+    022.23% { height: calc(clamp(1, var(--E), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    024.42% { height: calc(clamp(1, var(--EB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    024.44% { background-color: var(--color-tertiary); }
+    033.33% { background-color: var(--color-tertiary); }
+    033.34% { height: calc(clamp(1, var(--EB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    035.54% { height: calc(clamp(1, var(--PB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    035.55% { background-color: var(--color-tertiary); }
+    035.55% { background-color: var(--color-tertiary); }
+    035.57% { height: calc(clamp(1, var(--PB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    037.76% { height: calc(clamp(1, var(--QB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    037.77% { background-color: var(--color-tertiary); }
+    048.88% { background-color: var(--color-tertiary); }
+    048.90% { height: calc(clamp(1, var(--QB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    051.09% { height: calc(clamp(1, var(--DC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    051.11% { background-color: var(--color-tertiary); }
+    051.11% { background-color: var(--color-tertiary); }
+    051.12% { height: calc(clamp(1, var(--DC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    053.31% { height: calc(clamp(1, var(--EC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    053.33% { background-color: var(--color-tertiary); }
+    066.66% { background-color: var(--color-tertiary); }
+    066.68% { height: calc(clamp(1, var(--EC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    068.87% { height: calc(clamp(1, var(--TC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    068.88% { background-color: var(--color-tertiary); }
+    068.88% { background-color: var(--color-tertiary); }
+    068.90% { height: calc(clamp(1, var(--TC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    071.09% { height: calc(clamp(1, var(--UC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    071.11% { background-color: var(--color-tertiary); }
+    086.66% { background-color: var(--color-tertiary); }
+    086.68% { height: calc(clamp(1, var(--UC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    088.87% { height: calc(clamp(1, var(--LD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    088.88% { background-color: var(--color-tertiary); }
+    088.88% { background-color: var(--color-tertiary); }
+    088.90% { height: calc(clamp(1, var(--LD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    091.09% { height: calc(clamp(1, var(--MD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    091.11% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b4), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim6 {
+    0% { height: calc(clamp(1, var(--a5), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    013.33% { background-color: var(--color-tertiary); }
+    013.34% { height: calc(clamp(1, var(--F), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    015.54% { height: calc(clamp(1, var(--W), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    015.55% { background-color: var(--color-tertiary); }
+    022.22% { background-color: var(--color-tertiary); }
+    022.23% { height: calc(clamp(1, var(--W), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    024.42% { height: calc(clamp(1, var(--FB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    024.44% { background-color: var(--color-tertiary); }
+    024.44% { background-color: var(--color-tertiary); }
+    024.45% { height: calc(clamp(1, var(--FB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    026.65% { height: calc(clamp(1, var(--GB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    026.66% { background-color: var(--color-tertiary); }
+    035.55% { background-color: var(--color-tertiary); }
+    035.57% { height: calc(clamp(1, var(--GB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    037.76% { height: calc(clamp(1, var(--RB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    037.77% { background-color: var(--color-tertiary); }
+    037.77% { background-color: var(--color-tertiary); }
+    037.79% { height: calc(clamp(1, var(--RB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    039.98% { height: calc(clamp(1, var(--SB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    040.00% { background-color: var(--color-tertiary); }
+    051.11% { background-color: var(--color-tertiary); }
+    051.12% { height: calc(clamp(1, var(--SB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    053.31% { height: calc(clamp(1, var(--FC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    053.33% { background-color: var(--color-tertiary); }
+    053.33% { background-color: var(--color-tertiary); }
+    053.34% { height: calc(clamp(1, var(--FC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    055.54% { height: calc(clamp(1, var(--GC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    055.55% { background-color: var(--color-tertiary); }
+    068.88% { background-color: var(--color-tertiary); }
+    068.90% { height: calc(clamp(1, var(--GC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    071.09% { height: calc(clamp(1, var(--VC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    071.11% { background-color: var(--color-tertiary); }
+    071.11% { background-color: var(--color-tertiary); }
+    071.12% { height: calc(clamp(1, var(--VC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    073.31% { height: calc(clamp(1, var(--WC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    073.33% { background-color: var(--color-tertiary); }
+    088.88% { background-color: var(--color-tertiary); }
+    088.90% { height: calc(clamp(1, var(--WC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    091.09% { height: calc(clamp(1, var(--ND), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    091.11% { background-color: var(--color-tertiary); }
+    091.11% { background-color: var(--color-tertiary); }
+    091.12% { height: calc(clamp(1, var(--ND), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    093.31% { height: calc(clamp(1, var(--OD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    093.33% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b5), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim7 {
+    0% { height: calc(clamp(1, var(--a6), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    006.66% { background-color: var(--color-tertiary); }
+    006.68% { height: calc(clamp(1, var(--G), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    008.87% { height: calc(clamp(1, var(--Q), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    008.88% { background-color: var(--color-tertiary); }
+    013.33% { background-color: var(--color-tertiary); }
+    013.34% { height: calc(clamp(1, var(--Q), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    015.54% { height: calc(clamp(1, var(--X), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    015.55% { background-color: var(--color-tertiary); }
+    015.55% { background-color: var(--color-tertiary); }
+    015.57% { height: calc(clamp(1, var(--X), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    017.76% { height: calc(clamp(1, var(--Y), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    017.77% { background-color: var(--color-tertiary); }
+    024.44% { background-color: var(--color-tertiary); }
+    024.45% { height: calc(clamp(1, var(--Y), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    026.65% { height: calc(clamp(1, var(--HB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    026.66% { background-color: var(--color-tertiary); }
+    026.66% { background-color: var(--color-tertiary); }
+    026.68% { height: calc(clamp(1, var(--HB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    028.87% { height: calc(clamp(1, var(--IB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    028.88% { background-color: var(--color-tertiary); }
+    037.77% { background-color: var(--color-tertiary); }
+    037.79% { height: calc(clamp(1, var(--IB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    039.98% { height: calc(clamp(1, var(--TB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    040.00% { background-color: var(--color-tertiary); }
+    040.00% { background-color: var(--color-tertiary); }
+    040.01% { height: calc(clamp(1, var(--TB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    042.20% { height: calc(clamp(1, var(--UB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    042.22% { background-color: var(--color-tertiary); }
+    053.33% { background-color: var(--color-tertiary); }
+    053.34% { height: calc(clamp(1, var(--UB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    055.54% { height: calc(clamp(1, var(--HC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    055.55% { background-color: var(--color-tertiary); }
+    055.55% { background-color: var(--color-tertiary); }
+    055.57% { height: calc(clamp(1, var(--HC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    057.76% { height: calc(clamp(1, var(--IC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    057.77% { background-color: var(--color-tertiary); }
+    071.11% { background-color: var(--color-tertiary); }
+    071.12% { height: calc(clamp(1, var(--IC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    073.31% { height: calc(clamp(1, var(--XC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    073.33% { background-color: var(--color-tertiary); }
+    073.33% { background-color: var(--color-tertiary); }
+    073.34% { height: calc(clamp(1, var(--XC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    075.54% { height: calc(clamp(1, var(--YC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    075.55% { background-color: var(--color-tertiary); }
+    091.11% { background-color: var(--color-tertiary); }
+    091.12% { height: calc(clamp(1, var(--YC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    093.31% { height: calc(clamp(1, var(--PD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    093.33% { background-color: var(--color-tertiary); }
+    093.33% { background-color: var(--color-tertiary); }
+    093.34% { height: calc(clamp(1, var(--PD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    095.54% { height: calc(clamp(1, var(--QD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    095.55% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b6), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim8 {
+    0% { height: calc(clamp(1, var(--a7), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    002.22% { background-color: var(--color-tertiary); }
+    002.23% { height: calc(clamp(1, var(--H), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    004.42% { height: calc(clamp(1, var(--M), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    004.44% { background-color: var(--color-tertiary); }
+    006.66% { background-color: var(--color-tertiary); }
+    006.68% { height: calc(clamp(1, var(--M), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    008.87% { height: calc(clamp(1, var(--R), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    008.88% { background-color: var(--color-tertiary); }
+    008.88% { background-color: var(--color-tertiary); }
+    008.90% { height: calc(clamp(1, var(--R), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    011.09% { height: calc(clamp(1, var(--S), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    011.11% { background-color: var(--color-tertiary); }
+    015.55% { background-color: var(--color-tertiary); }
+    015.57% { height: calc(clamp(1, var(--S), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    017.76% { height: calc(clamp(1, var(--Z), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    017.77% { background-color: var(--color-tertiary); }
+    017.77% { background-color: var(--color-tertiary); }
+    017.79% { height: calc(clamp(1, var(--Z), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    019.98% { height: calc(clamp(1, var(--AB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    020.00% { background-color: var(--color-tertiary); }
+    026.66% { background-color: var(--color-tertiary); }
+    026.68% { height: calc(clamp(1, var(--AB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    028.87% { height: calc(clamp(1, var(--JB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    028.88% { background-color: var(--color-tertiary); }
+    028.88% { background-color: var(--color-tertiary); }
+    028.90% { height: calc(clamp(1, var(--JB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    031.09% { height: calc(clamp(1, var(--KB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    031.11% { background-color: var(--color-tertiary); }
+    040.00% { background-color: var(--color-tertiary); }
+    040.01% { height: calc(clamp(1, var(--KB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    042.20% { height: calc(clamp(1, var(--VB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    042.22% { background-color: var(--color-tertiary); }
+    042.22% { background-color: var(--color-tertiary); }
+    042.23% { height: calc(clamp(1, var(--VB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    044.42% { height: calc(clamp(1, var(--WB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    044.44% { background-color: var(--color-tertiary); }
+    055.55% { background-color: var(--color-tertiary); }
+    055.57% { height: calc(clamp(1, var(--WB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    057.76% { height: calc(clamp(1, var(--JC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    057.77% { background-color: var(--color-tertiary); }
+    057.77% { background-color: var(--color-tertiary); }
+    057.79% { height: calc(clamp(1, var(--JC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    059.98% { height: calc(clamp(1, var(--KC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    060.00% { background-color: var(--color-tertiary); }
+    073.33% { background-color: var(--color-tertiary); }
+    073.34% { height: calc(clamp(1, var(--KC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    075.54% { height: calc(clamp(1, var(--ZC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    075.55% { background-color: var(--color-tertiary); }
+    075.55% { background-color: var(--color-tertiary); }
+    075.57% { height: calc(clamp(1, var(--ZC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    077.76% { height: calc(clamp(1, var(--AD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    077.77% { background-color: var(--color-tertiary); }
+    093.33% { background-color: var(--color-tertiary); }
+    093.34% { height: calc(clamp(1, var(--AD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    095.54% { height: calc(clamp(1, var(--RD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    095.55% { background-color: var(--color-tertiary); }
+    095.55% { background-color: var(--color-tertiary); }
+    095.57% { height: calc(clamp(1, var(--RD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    097.76% { height: calc(clamp(1, var(--SD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    097.77% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b7), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim9 {
+    0% { height: calc(clamp(1, var(--a8), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    000.00% { background-color: var(--color-tertiary); }
+    000.01% { height: calc(clamp(1, var(--I), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    002.20% { height: calc(clamp(1, var(--K), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    002.22% { background-color: var(--color-tertiary); }
+    002.22% { background-color: var(--color-tertiary); }
+    002.23% { height: calc(clamp(1, var(--K), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    004.42% { height: calc(clamp(1, var(--N), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    004.44% { background-color: var(--color-tertiary); }
+    004.44% { background-color: var(--color-tertiary); }
+    004.45% { height: calc(clamp(1, var(--N), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    006.65% { height: calc(clamp(1, var(--O), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    006.66% { background-color: var(--color-tertiary); }
+    008.88% { background-color: var(--color-tertiary); }
+    008.90% { height: calc(clamp(1, var(--O), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    011.09% { height: calc(clamp(1, var(--T), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    011.11% { background-color: var(--color-tertiary); }
+    011.11% { background-color: var(--color-tertiary); }
+    011.12% { height: calc(clamp(1, var(--T), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    013.31% { height: calc(clamp(1, var(--U), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    013.33% { background-color: var(--color-tertiary); }
+    017.77% { background-color: var(--color-tertiary); }
+    017.79% { height: calc(clamp(1, var(--U), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    019.98% { height: calc(clamp(1, var(--BB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    020.00% { background-color: var(--color-tertiary); }
+    020.00% { background-color: var(--color-tertiary); }
+    020.01% { height: calc(clamp(1, var(--BB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    022.20% { height: calc(clamp(1, var(--CB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    022.22% { background-color: var(--color-tertiary); }
+    028.88% { background-color: var(--color-tertiary); }
+    028.90% { height: calc(clamp(1, var(--CB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    031.09% { height: calc(clamp(1, var(--LB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    031.11% { background-color: var(--color-tertiary); }
+    031.11% { background-color: var(--color-tertiary); }
+    031.12% { height: calc(clamp(1, var(--LB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    033.31% { height: calc(clamp(1, var(--MB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    033.33% { background-color: var(--color-tertiary); }
+    042.22% { background-color: var(--color-tertiary); }
+    042.23% { height: calc(clamp(1, var(--MB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    044.42% { height: calc(clamp(1, var(--XB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    044.44% { background-color: var(--color-tertiary); }
+    044.44% { background-color: var(--color-tertiary); }
+    044.45% { height: calc(clamp(1, var(--XB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    046.65% { height: calc(clamp(1, var(--YB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    046.66% { background-color: var(--color-tertiary); }
+    057.77% { background-color: var(--color-tertiary); }
+    057.79% { height: calc(clamp(1, var(--YB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    059.98% { height: calc(clamp(1, var(--LC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    060.00% { background-color: var(--color-tertiary); }
+    060.00% { background-color: var(--color-tertiary); }
+    060.01% { height: calc(clamp(1, var(--LC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    062.20% { height: calc(clamp(1, var(--MC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    062.22% { background-color: var(--color-tertiary); }
+    075.55% { background-color: var(--color-tertiary); }
+    075.57% { height: calc(clamp(1, var(--MC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    077.76% { height: calc(clamp(1, var(--BD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    077.77% { background-color: var(--color-tertiary); }
+    077.77% { background-color: var(--color-tertiary); }
+    077.79% { height: calc(clamp(1, var(--BD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    079.98% { height: calc(clamp(1, var(--CD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    080.00% { background-color: var(--color-tertiary); }
+    095.55% { background-color: var(--color-tertiary); }
+    095.57% { height: calc(clamp(1, var(--CD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    097.76% { height: calc(clamp(1, var(--TD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    097.77% { background-color: var(--color-tertiary); }
+    097.77% { background-color: var(--color-tertiary); }
+    097.79% { height: calc(clamp(1, var(--TD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    099.98% { height: calc(clamp(1, var(--UD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    100.00% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b8), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+@keyframes anim10 {
+    0% { height: calc(clamp(1, var(--a9), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+    000.00% { background-color: var(--color-tertiary); }
+    000.01% { height: calc(clamp(1, var(--J), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    002.20% { height: calc(clamp(1, var(--L), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    002.22% { background-color: var(--color-tertiary); }
+    004.44% { background-color: var(--color-tertiary); }
+    004.45% { height: calc(clamp(1, var(--L), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    006.65% { height: calc(clamp(1, var(--P), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    006.66% { background-color: var(--color-tertiary); }
+    011.11% { background-color: var(--color-tertiary); }
+    011.12% { height: calc(clamp(1, var(--P), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    013.31% { height: calc(clamp(1, var(--V), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    013.33% { background-color: var(--color-tertiary); }
+    020.00% { background-color: var(--color-tertiary); }
+    020.01% { height: calc(clamp(1, var(--V), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    022.20% { height: calc(clamp(1, var(--DB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    022.22% { background-color: var(--color-tertiary); }
+    031.11% { background-color: var(--color-tertiary); }
+    031.12% { height: calc(clamp(1, var(--DB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    033.31% { height: calc(clamp(1, var(--NB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    033.33% { background-color: var(--color-tertiary); }
+    044.44% { background-color: var(--color-tertiary); }
+    044.45% { height: calc(clamp(1, var(--NB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    046.65% { height: calc(clamp(1, var(--ZB), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    046.66% { background-color: var(--color-tertiary); }
+    060.00% { background-color: var(--color-tertiary); }
+    060.01% { height: calc(clamp(1, var(--ZB), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    062.20% { height: calc(clamp(1, var(--NC), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    062.22% { background-color: var(--color-tertiary); }
+    077.77% { background-color: var(--color-tertiary); }
+    077.79% { height: calc(clamp(1, var(--NC), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    079.98% { height: calc(clamp(1, var(--DD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    080.00% { background-color: var(--color-tertiary); }
+    097.77% { background-color: var(--color-tertiary); }
+    097.79% { height: calc(clamp(1, var(--DD), 10) / 10 * var(--h)); background-color: var(--color-primary); }
+    099.98% { height: calc(clamp(1, var(--VD), 10) / 10 * var(--h)); background-color: var(--color-secondary); }
+    100.00% { background-color: var(--color-tertiary); }
+    100% { height: calc(clamp(1, var(--b9), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }
+}
+
 
 </style>
 
@@ -261,13 +700,13 @@
         <h2>The sorting itself</h2>
         <!--<p class="terminal" id="aa">3 1 4 1 5 9 2 6 5 3</p>-->
         <!--<p class="terminal" id="bb">1 1 2 3 3 4 5 5 6 9</p>-->
-        <p class="terminal" id="aa"><span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> </p>
-        <p class="terminal" id="bb"><span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> </p>
+        <p class="terminal" id="aa"><span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> </p>
+        <p class="terminal" id="bb"><span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> </p>
 
         <!--<div class="animation">Animation goes here</div>-->
-        <div class="animation"><div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div>
+        <div class="animation"><div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div>
 
-        <button>Reload</button>
+        <button onclick="restartAnimation()">Reload</button>
 
         <h2>The pivotal code</h2>
 <!--<pre class="terminal">/* bubble sort */
@@ -303,11 +742,12 @@
     --a1: 1;
     --a2: 4;
     --a3: 1;
-    --a4: 5000;
-    --a5: 100;
-    --a6: 200;
-    --a7: 300;
-    --a8: 400;
+    --a4: 5;
+    --a5: 9;
+    --a6: 2;
+    --a7: 6;
+    --a8: 5;
+    --a9: 3;
 
     --A: var(--a0);
     --B: var(--a1);
@@ -318,90 +758,120 @@
     --G: var(--a6);
     --H: var(--a7);
     --I: var(--a8);
-    --J: min(var(--H), var(--I));
-    --K: max(var(--H), var(--I));
-    --L: min(var(--G), var(--J));
-    --M: max(var(--G), var(--J));
-    --N: min(var(--M), var(--K));
-    --O: max(var(--M), var(--K));
-    --P: min(var(--F), var(--L));
-    --Q: max(var(--F), var(--L));
-    --R: min(var(--Q), var(--N));
-    --S: max(var(--Q), var(--N));
-    --T: min(var(--S), var(--O));
-    --U: max(var(--S), var(--O));
-    --V: min(var(--E), var(--P));
-    --W: max(var(--E), var(--P));
-    --X: min(var(--W), var(--R));
-    --Y: max(var(--W), var(--R));
-    --Z: min(var(--Y), var(--T));
-    --AB: max(var(--Y), var(--T));
-    --BB: min(var(--AB), var(--U));
-    --CB: max(var(--AB), var(--U));
-    --DB: min(var(--D), var(--V));
-    --EB: max(var(--D), var(--V));
-    --FB: min(var(--EB), var(--X));
-    --GB: max(var(--EB), var(--X));
-    --HB: min(var(--GB), var(--Z));
-    --IB: max(var(--GB), var(--Z));
-    --JB: min(var(--IB), var(--BB));
-    --KB: max(var(--IB), var(--BB));
-    --LB: min(var(--KB), var(--CB));
-    --MB: max(var(--KB), var(--CB));
-    --NB: min(var(--C), var(--DB));
-    --OB: max(var(--C), var(--DB));
-    --PB: min(var(--OB), var(--FB));
-    --QB: max(var(--OB), var(--FB));
-    --RB: min(var(--QB), var(--HB));
-    --SB: max(var(--QB), var(--HB));
-    --TB: min(var(--SB), var(--JB));
-    --UB: max(var(--SB), var(--JB));
-    --VB: min(var(--UB), var(--LB));
-    --WB: max(var(--UB), var(--LB));
-    --XB: min(var(--WB), var(--MB));
-    --YB: max(var(--WB), var(--MB));
-    --ZB: min(var(--B), var(--NB));
-    --AC: max(var(--B), var(--NB));
-    --BC: min(var(--AC), var(--PB));
-    --CC: max(var(--AC), var(--PB));
-    --DC: min(var(--CC), var(--RB));
-    --EC: max(var(--CC), var(--RB));
-    --FC: min(var(--EC), var(--TB));
-    --GC: max(var(--EC), var(--TB));
-    --HC: min(var(--GC), var(--VB));
-    --IC: max(var(--GC), var(--VB));
-    --JC: min(var(--IC), var(--XB));
-    --KC: max(var(--IC), var(--XB));
-    --LC: min(var(--KC), var(--YB));
-    --MC: max(var(--KC), var(--YB));
-    --NC: min(var(--A), var(--ZB));
-    --OC: max(var(--A), var(--ZB));
-    --PC: min(var(--OC), var(--BC));
-    --QC: max(var(--OC), var(--BC));
-    --RC: min(var(--QC), var(--DC));
-    --SC: max(var(--QC), var(--DC));
-    --TC: min(var(--SC), var(--FC));
-    --UC: max(var(--SC), var(--FC));
-    --VC: min(var(--UC), var(--HC));
-    --WC: max(var(--UC), var(--HC));
-    --XC: min(var(--WC), var(--JC));
-    --YC: max(var(--WC), var(--JC));
-    --ZC: min(var(--YC), var(--LC));
-    --AD: max(var(--YC), var(--LC));
-    --BD: min(var(--AD), var(--MC));
-    --CD: max(var(--AD), var(--MC));
+    --J: var(--a9);
+    --K: min(var(--I), var(--J));
+    --L: max(var(--I), var(--J));
+    --M: min(var(--H), var(--K));
+    --N: max(var(--H), var(--K));
+    --O: min(var(--N), var(--L));
+    --P: max(var(--N), var(--L));
+    --Q: min(var(--G), var(--M));
+    --R: max(var(--G), var(--M));
+    --S: min(var(--R), var(--O));
+    --T: max(var(--R), var(--O));
+    --U: min(var(--T), var(--P));
+    --V: max(var(--T), var(--P));
+    --W: min(var(--F), var(--Q));
+    --X: max(var(--F), var(--Q));
+    --Y: min(var(--X), var(--S));
+    --Z: max(var(--X), var(--S));
+    --AB: min(var(--Z), var(--U));
+    --BB: max(var(--Z), var(--U));
+    --CB: min(var(--BB), var(--V));
+    --DB: max(var(--BB), var(--V));
+    --EB: min(var(--E), var(--W));
+    --FB: max(var(--E), var(--W));
+    --GB: min(var(--FB), var(--Y));
+    --HB: max(var(--FB), var(--Y));
+    --IB: min(var(--HB), var(--AB));
+    --JB: max(var(--HB), var(--AB));
+    --KB: min(var(--JB), var(--CB));
+    --LB: max(var(--JB), var(--CB));
+    --MB: min(var(--LB), var(--DB));
+    --NB: max(var(--LB), var(--DB));
+    --OB: min(var(--D), var(--EB));
+    --PB: max(var(--D), var(--EB));
+    --QB: min(var(--PB), var(--GB));
+    --RB: max(var(--PB), var(--GB));
+    --SB: min(var(--RB), var(--IB));
+    --TB: max(var(--RB), var(--IB));
+    --UB: min(var(--TB), var(--KB));
+    --VB: max(var(--TB), var(--KB));
+    --WB: min(var(--VB), var(--MB));
+    --XB: max(var(--VB), var(--MB));
+    --YB: min(var(--XB), var(--NB));
+    --ZB: max(var(--XB), var(--NB));
+    --AC: min(var(--C), var(--OB));
+    --BC: max(var(--C), var(--OB));
+    --CC: min(var(--BC), var(--QB));
+    --DC: max(var(--BC), var(--QB));
+    --EC: min(var(--DC), var(--SB));
+    --FC: max(var(--DC), var(--SB));
+    --GC: min(var(--FC), var(--UB));
+    --HC: max(var(--FC), var(--UB));
+    --IC: min(var(--HC), var(--WB));
+    --JC: max(var(--HC), var(--WB));
+    --KC: min(var(--JC), var(--YB));
+    --LC: max(var(--JC), var(--YB));
+    --MC: min(var(--LC), var(--ZB));
+    --NC: max(var(--LC), var(--ZB));
+    --OC: min(var(--B), var(--AC));
+    --PC: max(var(--B), var(--AC));
+    --QC: min(var(--PC), var(--CC));
+    --RC: max(var(--PC), var(--CC));
+    --SC: min(var(--RC), var(--EC));
+    --TC: max(var(--RC), var(--EC));
+    --UC: min(var(--TC), var(--GC));
+    --VC: max(var(--TC), var(--GC));
+    --WC: min(var(--VC), var(--IC));
+    --XC: max(var(--VC), var(--IC));
+    --YC: min(var(--XC), var(--KC));
+    --ZC: max(var(--XC), var(--KC));
+    --AD: min(var(--ZC), var(--MC));
+    --BD: max(var(--ZC), var(--MC));
+    --CD: min(var(--BD), var(--NC));
+    --DD: max(var(--BD), var(--NC));
+    --ED: min(var(--A), var(--OC));
+    --FD: max(var(--A), var(--OC));
+    --GD: min(var(--FD), var(--QC));
+    --HD: max(var(--FD), var(--QC));
+    --ID: min(var(--HD), var(--SC));
+    --JD: max(var(--HD), var(--SC));
+    --KD: min(var(--JD), var(--UC));
+    --LD: max(var(--JD), var(--UC));
+    --MD: min(var(--LD), var(--WC));
+    --ND: max(var(--LD), var(--WC));
+    --OD: min(var(--ND), var(--YC));
+    --PD: max(var(--ND), var(--YC));
+    --QD: min(var(--PD), var(--AD));
+    --RD: max(var(--PD), var(--AD));
+    --SD: min(var(--RD), var(--CD));
+    --TD: max(var(--RD), var(--CD));
+    --UD: min(var(--TD), var(--DD));
+    --VD: max(var(--TD), var(--DD));
 
-    --b0: var(--NC);
-    --b1: var(--PC);
-    --b2: var(--RC);
-    --b3: var(--TC);
-    --b4: var(--VC);
-    --b5: var(--XC);
-    --b6: var(--ZC);
-    --b7: var(--BD);
-    --b8: var(--CD);
+    --b0: var(--ED);
+    --b1: var(--GD);
+    --b2: var(--ID);
+    --b3: var(--KD);
+    --b4: var(--MD);
+    --b5: var(--OD);
+    --b6: var(--QD);
+    --b7: var(--SD);
+    --b8: var(--UD);
+    --b9: var(--VD);
 }
 </pre>
     </div>
+    <script>
+        function restartAnimation() {
+            const box = document.querySelector('.animation');
+            box.classList.remove('animation');
+            setTimeout(() => {
+                box.classList.add('animation');
+            });
+        }
+    </script>
+
 </body>
 </html>

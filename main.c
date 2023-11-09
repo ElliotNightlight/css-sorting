@@ -111,6 +111,8 @@ String css_more;
 String html_io;
 String html_animation;
 
+Int64 Time;
+
 void compile() {
     string_new(&pivotal);
     string_append(&pivotal, ":root {\n");
@@ -135,6 +137,21 @@ void compile() {
         string_append(&pivotal, ");\n");
     }
 
+    Int64 c_swaps = numbers.len * (numbers.len - 1) / 2;
+    Time = c_swaps;
+    Int64 swap_i = 0;
+    string_new(&css_more);
+    String *keyframes = (String*)malloc(sizeof(String)*numbers.len); // this needs to be freed later
+    for(IntSize i = 0; i != (IntSize)numbers.len; ++i) {
+        string_new(&keyframes[i]); // this also
+        string_append(&keyframes[i], "@keyframes anim");
+        string_append_base10(&keyframes[i], i + 1);
+        string_append(&keyframes[i], " {\n");
+        string_append(&keyframes[i], "    0% { height: calc(clamp(1, var(--a");
+        string_append_base10(&keyframes[i], i);
+        string_append(&keyframes[i], "), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }\n");
+    }
+
     for(IntSize i = (IntSize)numbers.len-1; i >= 0; --i) {
         for(IntSize j = i; j + 1 < (IntSize)numbers.len; ++j) {
             string_append(&pivotal, "    --");
@@ -153,10 +170,60 @@ void compile() {
             string_append_base26(&pivotal, lookup[j+1]);
             string_append(&pivotal, "));\n");
 
+            const double eps = 0.00015;
+
+            string_append(&keyframes[j], "    ");
+            string_append_percent(&keyframes[j], (double) swap_i / c_swaps);
+            string_append(&keyframes[j], " { background-color: var(--color-tertiary); }\n");
+
+            string_append(&keyframes[j], "    ");
+            string_append_percent(&keyframes[j], (double) swap_i / c_swaps + eps);
+            string_append(&keyframes[j], " { height: calc(clamp(1, var(--");
+            string_append_base26(&keyframes[j], lookup[j]);
+            string_append(&keyframes[j], "), 10) / 10 * var(--h)); background-color: var(--color-primary); }\n");
+            string_append(&keyframes[j], "    ");
+            string_append_percent(&keyframes[j], (double) (swap_i + 1) / c_swaps - eps);
+            string_append(&keyframes[j], " { height: calc(clamp(1, var(--");
+            string_append_base26(&keyframes[j], C);
+            string_append(&keyframes[j], "), 10) / 10 * var(--h)); background-color: var(--color-secondary); }\n");
+
+            string_append(&keyframes[j], "    ");
+            string_append_percent(&keyframes[j], (double) (swap_i + 1) / c_swaps);
+            string_append(&keyframes[j], " { background-color: var(--color-tertiary); }\n");
+
+
+            string_append(&keyframes[j+1], "    ");
+            string_append_percent(&keyframes[j+1], (double) swap_i / c_swaps);
+            string_append(&keyframes[j+1], " { background-color: var(--color-tertiary); }\n");
+
+            string_append(&keyframes[j+1], "    ");
+            string_append_percent(&keyframes[j+1], (double) swap_i / c_swaps + eps);
+            string_append(&keyframes[j+1], " { height: calc(clamp(1, var(--");
+            string_append_base26(&keyframes[j+1], lookup[j+1]);
+            string_append(&keyframes[j+1], "), 10) / 10 * var(--h)); background-color: var(--color-primary); }\n");
+            string_append(&keyframes[j+1], "    ");
+            string_append_percent(&keyframes[j+1], (double) (swap_i + 1) / c_swaps - eps);
+            string_append(&keyframes[j+1], " { height: calc(clamp(1, var(--");
+            string_append_base26(&keyframes[j+1], C+1);
+            string_append(&keyframes[j+1], "), 10) / 10 * var(--h)); background-color: var(--color-secondary); }\n");
+
+            string_append(&keyframes[j+1], "    ");
+            string_append_percent(&keyframes[j+1], (double) (swap_i + 1) / c_swaps);
+            string_append(&keyframes[j+1], " { background-color: var(--color-tertiary); }\n");
+
             lookup[j] = C;
             lookup[j+1] = C+1;
             C += 2;
+
+            ++swap_i;
         }
+    }
+
+    for(IntSize i = 0; i != (IntSize)numbers.len; ++i) {
+        string_append(&keyframes[i], "    100% { height: calc(clamp(1, var(--b");
+        string_append_base10(&keyframes[i], i);
+        string_append(&keyframes[i], "), 10) / 10 * var(--h)); background-color: var(--color-tertiary); }\n");
+        string_append(&keyframes[i], "}\n");
     }
 
     string_append(&pivotal, "\n");
@@ -170,8 +237,6 @@ void compile() {
 
     string_append(&pivotal, "}\n");
     free(lookup);
-
-    string_new(&css_more);
 
     for(IntSize i = 0; i != (IntSize)numbers.len; ++i) {
         string_append(&css_more, "#aa span:nth-child(");
@@ -188,6 +253,24 @@ void compile() {
         string_append(&css_more, "):after { counter-reset: sth var(--b");
         string_append_base10(&css_more, i);
         string_append(&css_more, "); content: counter(sth); }\n");
+    }
+
+    string_append(&css_more, "\n");
+    for(IntSize i = 0; i != (IntSize)numbers.len; ++i) {
+        string_append(&css_more, "div.animation > div:nth-child(");
+        string_append_base10(&css_more, i + 1);
+        string_append(&css_more, ") { height: calc(clamp(1, var(--a");
+        string_append_base10(&css_more, i);
+        string_append(&css_more, "), 10) / 10 * var(--h)); animation-name: anim");
+        string_append_base10(&css_more, i + 1);
+        string_append(&css_more, "; }\n");
+    }
+
+    string_append(&css_more, "\n");
+    for(IntSize i = 0; i != (IntSize)numbers.len; ++i) {
+        string_extend(&keyframes[i]);
+        keyframes[i].arr[keyframes[i].len] = 0;
+        string_append(&css_more, keyframes[i].arr);
     }
 
     string_new(&html_io);
@@ -246,6 +329,8 @@ void insert() {
                             string_append(&target, "warning");
                     } else if(!strcmp(label.arr, "len")) {
                         string_append_base10(&target, numbers.len);
+                    } else if(!strcmp(label.arr, "Time")) {
+                        string_append_base10(&target, Time);
                     }
                 } else {
                     backtick = 1;
@@ -329,6 +414,7 @@ int main(const int argc, const char* argv[]) {
     string_free(&target);
 
     warnings_errors_inform();
+    printf("Remember that the animation will look best with numbers 1..10. Numbers outside that scope are going to be clamped.\n");
     printf("%s\n", FINAL_MESSAGE_LOOKUP[status]);
     return status;
 }
