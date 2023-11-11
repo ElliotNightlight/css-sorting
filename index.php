@@ -69,6 +69,7 @@ $cswap = function ($p, $q) {
 switch($algorithm) {
     case 'selection': $pivotal_code .= "/* Selection sort */\n"; break;
     case 'sn23': $pivotal_code .= "/* SN-23 */\n"; break;
+    case 'bitonic': $pivotal_code .= "/* Bitonic sorter */\n"; break;
     default:
     case 'bubble': $pivotal_code .= "/* Bubble sort */\n"; break;
 }
@@ -89,6 +90,7 @@ for($i = 0; $i < $length; $i++) {
 switch($algorithm) {
     case 'selection': SelectionSort($length, $cswap); break;
     case 'sn23': SortingNetworkTwoThree($length, $cswap); break;
+    case 'bitonic': Bitonic($length, $cswap); break;
     default:
     case 'bubble': BubbleSort($length, $cswap); break;
 }

@@ -24,6 +24,7 @@
                 <option value="bubble">Bubble sort</option>
                 <option value="selection">Selection sort</option>
                 <option value="sn23">SN-23</option>
+                <option value="bitonic">Bitonic sorter</option>
             </select>
             <input type="text" name="data" value="3 1 4 1 5">
             <button type="submit">Sort</button>
