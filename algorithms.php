@@ -17,7 +17,24 @@ function SelectionSort($n, $cswap) {
 }
 
 function SortingNetworkTwoThree($n, $cswap) {
-    // to do !
+    $magic = [];
+    $k = 1;
+    while($k < $n) {
+        $l = 1;
+        while($l < $n) {
+            if($k * $l < $n)
+                $magic[] = $k * $l;
+            $l *= 3;
+        }
+        $k *= 2;
+    }
+
+    for($i = count($magic)-1; $i >= 0; $i--) {
+        $delta = $magic[$i];
+        for($j = 0; $j + $delta < $n; $j++) {
+            $cswap($j, $j + $delta);
+        }
+    }
 }
 
 ?>

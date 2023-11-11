@@ -1,6 +1,11 @@
 <?php
 require_once('algorithms.php');
-$numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3];
+if(!isset($_GET['algo'])) $_GET['algo'] = 'bubble';
+if(!isset($_GET['data'])) $_GET['data'] = '3 1 4 1 5';
+
+$algorithm = $_GET['algo'];
+$numbers = @array_map('intval', explode(' ', $_GET['data']));
+if(!is_array($numbers)) $numbers = [3, 1, 4, 1, 5];
 $length = count($numbers);
 
 $minimum = min($numbers);
@@ -23,11 +28,10 @@ $total_steps = 0;
 function map($x) {
     global $alpha;
     global $gamma;
-    if($gamma == 0) return "calc($alpha * $x * var(--theater-height))";
-    else return "calc(($alpha * $x + $gamma) * var(--theater-height))";
-    //return "calc(clamp(1, $x, 10) / 10 * var(--theater-height))";
-    //return "calc($x * var(--alpha) + var(--gamma))";
-    //return "calc((($x - var(--minimum)) / (var(--maximum) - var(--minimum)) * 9 / 10 + 1/10) * var(--theater-height))";
+    global $minimum;
+    global $maximum;
+    if($gamma == 0) return "calc($alpha * clamp($minimum, $x, $maximum) * var(--theater-height))";
+    else return "calc(($alpha * clamp($minimum, $x, $maximum) + $gamma) * var(--theater-height))";
 }
 
 $cswap = function ($p, $q) {
@@ -62,6 +66,12 @@ $cswap = function ($p, $q) {
     $C += 2;
 };
 
+switch($algorithm) {
+    case 'selection': $pivotal_code .= "/* Selection sort */\n"; break;
+    case 'sn23': $pivotal_code .= "/* SN-23 */\n"; break;
+    default:
+    case 'bubble': $pivotal_code .= "/* Bubble sort */\n"; break;
+}
 $pivotal_code .= ":root {\n";
 for($i = 0; $i < $length; $i++) {
     $pivotal_code .= "    --a$i: {$numbers[$i]};\n";
@@ -76,7 +86,12 @@ for($i = 0; $i < $length; $i++) {
     $C++;
     $pivotal_code .= "    --t{$lookup[$i]}: var(--a$i);\n";
 }
-BubbleSort($length, $cswap);
+switch($algorithm) {
+    case 'selection': SelectionSort($length, $cswap); break;
+    case 'sn23': SortingNetworkTwoThree($length, $cswap); break;
+    default:
+    case 'bubble': BubbleSort($length, $cswap); break;
+}
 
 $pivotal_code .= "\n";
 for($i = 0; $i < $length; $i++) {
@@ -86,16 +101,7 @@ for($i = 0; $i < $length; $i++) {
 }
 $pivotal_code .= "}\n";
 
-
-/*$visuals_code .= "#theater {\n";
-$visuals_code .= "    --minimum: var(--b0);\n";
-$visuals_code .= "    --maximum: var(--b" . ($length - 1) . ");\n";
-//$visuals_code .= "    --alpha: calc(1 / (var(--maximum) - var(--minimum)) * 9 / 10 * var(--theater-height));\n";
-//$visuals_code .= "    --gamma: calc(( -1 * var(--minimum) / (var(--maximum) - var(--minimum)) * 9 / 10 + 1/10) * var(--theater-height));\n";
-$visuals_code .= "}\n";*/
-
 for($i = 0; $i < $length; $i++) {
-    //$visuals_code .= "#theater > div:nth-child(" . ($i + 1) . ") { height: " . map("var(--a$i)") . "; animation-name: animation" . ($i + 1) . "; }\n";
     $visuals_code .= "#theater > div:nth-child(" . ($i + 1) . ") { height: " . map("var(--a$i)") . "; animation-name: animation" . ($i + 1) . "; }\n";
     $visuals_code .= "@keyframes animation" . ($i + 1) . " {\n";
     $last = -1;
@@ -103,7 +109,7 @@ for($i = 0; $i < $length; $i++) {
         [$steps, $color, $height] = $elm;
         if($steps == $last) continue;
         $last = $steps;
-        $visuals_code .= "    " . (100.0 * $steps / $total_steps) . "% { background-color: ";
+        $visuals_code .= "    " . (100.0 * $steps / max($total_steps, 1)) . "% { background-color: ";
         if($color == 'tertiary') $visuals_code .= "var(--color-tertiary);";
         else if($color == "primary") $visuals_code .= "var(--color-primary);";
         else if($color == "secondary") $visuals_code .= "var(--color-secondary);";
@@ -173,15 +179,15 @@ for($i = 0; $i < $length; $i++) {
 <body>
     <div id="page">
         <h1>Sorting your array with <span>CSS</span> magic</h1>
-        <p>What you can see below is pure CSS integer array sorting; if the compilation went well. (Well, there's a button, which uses JS, to reload the animation but the sorting and animation themselves are done with pure CSS.) So, sit tight and enjoy your browser doing excessive work to sort an array of a few numbers. By the way, this page has been generated with my handcrafted compiler. It takes a file with an array of integers as input and gives the HTML and CSS which sort the array as output. The compiler uses bubble sort as for now.</p>
-        <pre class="box `okay`"><!--PHP would go here--></pre>
+        <p>What you can see below is pure CSS integer array sorting. (Well, there's a button, which uses JS, to reload the animation but the sorting and animation themselves are done with pure CSS.) So, sit tight and enjoy your browser doing excessive work to sort an array of a few numbers. By the way, this page has been generated with PHP and you can <a href="new.php">generate a new one</a> with different numbers and sorting algorithm.</p>
+        <pre class="box okay">Compilation successful. Sorting now...</pre>
 
         <h2>The sorting itself</h2>
         <p class="box" id="a"><?= str_repeat("<span></span> ", $length) ?></p>
         <p class="box" id="b"><?= str_repeat("<span></span> ", $length) ?></p>
 
         <div id="theater"><?= str_repeat("<div></div>", $length) ?></div>
-        <button onclick="restartAnimation()">Reload</button>
+        <button id="reload" onclick="restartAnimation()">Reload</button>
 
         <h2>The pivotal code</h2>
         <pre class="box"><?= $pivotal_code ?></pre>

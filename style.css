@@ -72,7 +72,7 @@ pre.warning { color: var(--color-terminal-warning); }
 }
 
 button {
-    margin-top: 0;
+    margin-top: 1em;
     margin-bottom: 1em;
     width: inherit;
     border: 0;
@@ -87,3 +87,31 @@ button {
     user-select: none;
 }
 
+button#reload {
+    margin-top: 0em;
+}
+
+input, select {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    width: inherit;
+    border: 0;
+    font: inherit;
+    color: inherit;
+    background-color: var(--color-tertiary);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+select > option {
+    background-color: var(--color-background);
+}
+
+form {
+    width: 100%;
+}
+
+a {
+    color: inherit;
+}
