@@ -1,0 +1,89 @@
+:root {
+    --color-text:       #efefef;
+    --color-background: #220426;
+    --color-primary:    #d6d600;
+    --color-secondary:  #00a8dc;
+    --color-tertiary:   #ffffff27;
+    /*--color-tertiary:   #ae00ab;*/
+    --color-quaternary: #ffffff1a;
+
+    --color-terminal-bg:      #000000;
+    --color-terminal-text:    #ffffff;
+    --color-terminal-okay:    #00ff00;
+    --color-terminal-warning: #ffff00;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background-color: #333; }
+::-webkit-scrollbar-thumb { background-color: #666; border-radius: 5px; }
+
+#page {
+    width: 1050px;
+    margin: 0 auto;
+    padding-top: 2em;
+}
+
+h1, h2{
+    letter-spacing: 0.04em;
+    font-style: italic;
+}
+
+h1 { font-size: 2.6em; }
+h1:before { content: '_'; color: var(--color-primary); }
+h1:after { content: '_'; color: var(--color-secondary); }
+
+h1 > span {
+    background: linear-gradient(88deg, var(--color-primary), var(--color-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 { margin-top: 1.9em; }
+
+p {
+    text-align: justify;
+}
+
+pre.box, p.box {
+    padding: 25px;
+    border-radius: 7px;
+    font-family: 'Ubuntu Mono', sans-serif;
+    background-color: var(--color-terminal-bg);
+    color: var(--color-terminal-text);
+}
+pre.okay { color: var(--color-terminal-okay); }
+pre.warning { color: var(--color-terminal-warning); }
+
+#theater {
+    padding: 30px;
+    margin: 1em 0;
+    background-color: var(--color-quaternary);
+    margin-bottom: 0;
+    user-select: none;
+}
+
+button {
+    margin-top: 0;
+    margin-bottom: 1em;
+    width: inherit;
+    border: 0;
+    font: inherit;
+    color: var(--color-background);
+    background: linear-gradient(88deg, var(--color-primary), var(--color-secondary));
+    padding: 25px;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+}
+
