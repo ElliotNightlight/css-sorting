@@ -1,2 +1,4 @@
-# CSS-sort-compiler
-Compile an array of numbers to an .html file that sorts it with CSS magic. The compiler is written in C.
+# css-sorting
+Sort an array using CSS magic. Generate the website using PHP.  
+Run with `php -S 127.0.0.1:8000`.  
+
